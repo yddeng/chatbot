@@ -1,0 +1,5 @@
+{
+  "qa_path": "config/qa.json",
+  "robot_path": "config/robot.json",
+  "log_path": "log"
+}
