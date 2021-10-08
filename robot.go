@@ -1,6 +1,7 @@
 package chatbot
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 )
@@ -57,6 +58,7 @@ func (r *ChatBot) GetAnswer(q string) string {
 					if co > max {
 						max = co
 						ans = r.qaList.GetAnswer(id)
+						fmt.Println(co)
 					}
 				}
 			}
