@@ -1,4 +1,6 @@
-package chatbot
+package robot
+
+import "github.com/yddeng/chatbot/utils"
 
 type Config struct {
 	QaPath    string `json:"qa_path"`
@@ -10,7 +12,7 @@ var config *Config
 
 func LoadConfig(filename string) *Config {
 	conf := &Config{}
-	if err := DecodeJsonFromFile(&conf, filename); err != nil {
+	if err := utils.DecodeJsonFromFile(&conf, filename); err != nil {
 		panic(err)
 	}
 

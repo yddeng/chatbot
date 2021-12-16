@@ -1,4 +1,4 @@
-package chatbot
+package utils
 
 import "github.com/yanyiwu/gojieba"
 

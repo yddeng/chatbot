@@ -1,7 +1,8 @@
-package chatbot
+package robot
 
 import (
 	"encoding/json"
+	"github.com/yddeng/chatbot/utils"
 	"io/ioutil"
 )
 
@@ -32,7 +33,7 @@ func loadQAList(filename string) (*QAList, error) {
 	}
 
 	for _, v := range list.QA {
-		v.WorldTimes = CutMap(v.Q)
+		v.WorldTimes = utils.CutMap(v.Q)
 	}
 
 	list.WorldSeq = map[string][]int{}

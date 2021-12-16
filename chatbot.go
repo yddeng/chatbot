@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/yddeng/chatbot"
+	"github.com/yddeng/chatbot/robot"
 )
 
 func main() {
-	conf := chatbot.LoadConfig("config/config.json")
+	conf := robot.LoadConfig("config/config.json")
 
-	robot, err := chatbot.Chatbot(conf)
+	r, err := robot.Chatbot(conf)
 	if err != nil {
 		panic(err)
 	}
@@ -18,7 +18,7 @@ func main() {
 		fmt.Print("=>")
 		fmt.Scan(&q)
 
-		ans := robot.GetAnswer(q)
+		ans := r.GetAnswer(q)
 		fmt.Println(ans)
 	}
 }

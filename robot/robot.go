@@ -1,7 +1,8 @@
-package chatbot
+package robot
 
 import (
 	"fmt"
+	"github.com/yddeng/chatbot/utils"
 	"math/rand"
 	"time"
 )
@@ -32,7 +33,7 @@ func Chatbot(conf *Config) (*ChatBot, error) {
 	chatbot := new(ChatBot)
 	rand.Seed(time.Now().UnixNano())
 
-	if err := DecodeJsonFromFile(&chatbot.config, conf.RobotPath); err != nil {
+	if err := utils.DecodeJsonFromFile(&chatbot.config, conf.RobotPath); err != nil {
 		return nil, err
 	}
 
@@ -46,14 +47,14 @@ func Chatbot(conf *Config) (*ChatBot, error) {
 }
 
 func (r *ChatBot) GetAnswer(q string) string {
-	wm := CutMap(q)
+	wm := utils.CutMap(q)
 	max := float64(0)
 	ans := ""
 
 	for w := range wm {
 		if _, ok := r.qaList.WorldSeq[w]; ok {
 			for _, id := range r.qaList.WorldSeq[w] {
-				co := Cosine_sim(wm, r.qaList.QA[id].WorldTimes)
+				co := utils.Cosine_sim(wm, r.qaList.QA[id].WorldTimes)
 				if co > r.config.Cosine {
 					if co > max {
 						max = co
